@@ -30,6 +30,7 @@ attr_accessor :name, :location, :profile_url
   end
 
   def self.scrape_profile_page(profile_url)
+    hash = {}
     twitter_page = nil
     linkedin_page = nil
     github_page = nil
@@ -44,19 +45,24 @@ attr_accessor :name, :location, :profile_url
     list_of_urls.each do |pages|
       if pages.include?("twitter")
         twitter_page = pages
+        hash[:twitter] = twitter_page
     elsif
       pages.include?("linkedin")
       linkedin_page = pages
+      hash[:linkedin] = linkedin_page
     elsif
       pages.include?("github")
       github_page = pages
+      hash[:github] = github_page
     elsif
       blog_page = pages
+      hash[:blog] = blog_page
     end
     end
     profile_quote = doc.css(".profile-quote").text
     bio = doc.css(".description-holder").css("p").text
-    hash = {:twitter=> twitter_page, :linkedin => linkedin_page, :github => github_page, :blog => blog_page, :profile_quote => profile_quote, :bio => bio}
+    hash[:profile_quote] = profile_quote
+    hash[:bio] = bio
     return hash
   end
 
