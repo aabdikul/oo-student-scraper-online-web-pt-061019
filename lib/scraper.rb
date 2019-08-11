@@ -59,6 +59,5 @@ attr_accessor :name, :location, :profile_url
     hash = {:twitter=> twitter_page, :linkedin => linkedin_page, :github => github_page, :blog => blog_page, :profile_quote => profile_quote, :bio => bio}
     return hash
   end
-binding.pry
 
 end
