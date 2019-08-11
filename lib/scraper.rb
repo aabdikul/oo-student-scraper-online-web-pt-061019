@@ -58,6 +58,7 @@ attr_accessor :name, :location, :profile_url
     bio = doc.css(".description-holder").css("p").text
     hash = {:twitter=> twitter_page, :linkedin => linkedin_page, :github => github_page, :blog => blog_page, :profile_quote => profile_quote, :bio => bio}
     return hash
+    binding.pry
   end
 
 
